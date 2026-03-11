@@ -1,0 +1,10 @@
+FROM maven:3.9-eclipse-temurin-21-alpine
+
+WORKDIR /app
+
+# The pom.xml and dependencies will be resolved by the volume mount and initial container run,
+# but we can optionally pre-resolve to speed up start times if not mounting immediately.
+# In our setup, mounting volume overrides /app, so dependencies are resolved on first boot inside container.
+
+# We will run the maven command directly in docker-compose
+CMD ["mvn", "spring-boot:run"]
