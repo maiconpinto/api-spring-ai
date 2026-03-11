@@ -21,6 +21,7 @@ spring:
       api-key: ${OPENROUTER_API_KEY}
       base-url: https://openrouter.ai/api/v1
       chat:
+        completions-path: /chat/completions
         options:
           model: google/gemini-2.0-flash-001
   devtools:

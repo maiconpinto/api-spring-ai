@@ -77,7 +77,11 @@ public class TaskDecompositionService {
             }
         } catch (Exception e) {
             log.error("Error during AI task decomposition", e);
-            parentTask.setAiResponse("Erro ao processar: " + e.getMessage());
+            String errorMsg = e.getMessage();
+            if (errorMsg != null && errorMsg.length() > 500) {
+                errorMsg = errorMsg.substring(0, 500) + "... [truncated]";
+            }
+            parentTask.setAiResponse("Erro ao processar: " + errorMsg);
         }
         return parentTask;
     }
